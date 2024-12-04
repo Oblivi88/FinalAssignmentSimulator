@@ -23,5 +23,12 @@ void draw() {
       gameStart = true;
     }
   }
-  println(gameStart);
+  if (gameStart) {
+    game();
+  }
+}
+
+void game() {
+  background(135,206,235);
+
 }
