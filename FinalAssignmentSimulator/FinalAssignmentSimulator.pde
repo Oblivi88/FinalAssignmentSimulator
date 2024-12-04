@@ -1,4 +1,5 @@
 Cockpit cockpitObject;
+Runway runwayObject;
 
 boolean gameStart;
 
@@ -13,6 +14,7 @@ void setup() {
   start = loadImage("Start.png");
   instructions = loadImage("instructions.png");
   cockpitObject = new Cockpit();
+  runwayObject = new Runway();
   gameStart = false;
 }
 
@@ -33,5 +35,6 @@ void draw() {
 
 void game() {
   background(135,206,235);
+  runwayObject.create();
   cockpitObject.create();
 }
