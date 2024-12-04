@@ -37,4 +37,5 @@ void game() {
   background(135,206,235);
   runwayObject.create();
   cockpitObject.create();
+  runwayObject.move();
 }
