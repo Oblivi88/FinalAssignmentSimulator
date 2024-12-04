@@ -1,3 +1,5 @@
+Cockpit cockpitObject;
+
 boolean gameStart;
 
 PImage title;
@@ -10,6 +12,7 @@ void setup() {
   title = loadImage("Title.png");
   start = loadImage("Start.png");
   instructions = loadImage("instructions.png");
+  cockpitObject = new Cockpit();
   gameStart = false;
 }
 
@@ -30,5 +33,5 @@ void draw() {
 
 void game() {
   background(135,206,235);
-
+  cockpitObject.create();
 }
