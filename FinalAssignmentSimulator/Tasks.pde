@@ -8,7 +8,7 @@ class Tasks {
   PImage check;
   int taskassign;
   int score;
-  boolean hasScoreIncreased;
+  boolean willScoreIncrease;
 
  Tasks() {
   timer = 4;
@@ -20,7 +20,7 @@ class Tasks {
   directionKey = loadImage("directionKey.png");
   check = loadImage("check.png");
   taskassign = 1;
-  hasScoreIncreased = false;
+  willScoreIncrease = false;
  }
  void start(int task) {
    if (frameCount % 60 == 0) {
@@ -29,7 +29,10 @@ class Tasks {
    if (timer == -1) {
      timer = 3;
      taskassign++;
-     hasScoreIncreased = false;
+     if (willScoreIncrease == true) {
+       score++;
+     }
+     willScoreIncrease = false;
    }
    image(taskdirections, 580, 540);
    
@@ -40,10 +43,9 @@ class Tasks {
      text("F", 560, 590);
      if (key == 'f') {
        image(check, 220, 550);
-     }
-     if (key == 'f' && !hasScoreIncreased) {
-       score++;
-       hasScoreIncreased = true;
+       if (!willScoreIncrease) {
+         willScoreIncrease = true;
+       }
      }
      
      
@@ -53,10 +55,9 @@ class Tasks {
      text("L", 560, 590);
      if (key == 'l') {
        image(check, 220, 550);
-     }
-     if (key == 'l' && !hasScoreIncreased) {
-       score++;
-       hasScoreIncreased = true;
+       if (!willScoreIncrease) {
+         willScoreIncrease = true;
+       }
      }
    } else  if (task == 3) {
      image(task3, 220, 540);
