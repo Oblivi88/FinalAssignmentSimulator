@@ -3,12 +3,11 @@ Runway runwayObject;
 Tasks[] task = new Tasks[3];
 
 boolean gameStart;
-
+int index;
+int score;
 PImage title;
 PImage start;
 PImage instructions;
-
-PFont font;
 
 void setup() {
   size(800, 800);
@@ -19,9 +18,10 @@ void setup() {
   cockpitObject = new Cockpit();
   runwayObject = new Runway();
   for (int i = 0; i < 3; i++) {
-    task[i] = new Tasks();
+    task[i] = new Tasks(i + 1);
   }
-  font = createFont("Consolas", 75);
+  index = 0;
+  score = 0;
   gameStart = false;
 }
 
@@ -45,10 +45,16 @@ void game() {
   runwayObject.create();
   cockpitObject.create();
   runwayObject.move();
-  textFont(font);
-  fill(0, 180, 0);
-  text(task[0].timer, 200, 600);
-  task[0].start(task[0].taskassign);
-  println(task[0].score);
-  
+  task[index].start();
+  if (task[index].timer == -1) {
+    if (task[index].score == 1) {
+      score++;
+    }
+    task[index].timer = 4;
+    index++;
+    if (index >= task.length) {
+      index = 0;
+    }
+  }
+  println(score);
 }
