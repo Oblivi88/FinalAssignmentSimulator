@@ -5,6 +5,7 @@ class Tasks {
   PImage task3;
   PImage taskdirections;
   PImage directionKey;
+  int taskassign;
 
  Tasks() {
   timer = 4;
@@ -13,10 +14,15 @@ class Tasks {
   task3 = loadImage("task3.png");
   taskdirections = loadImage("taskdirections.png");
   directionKey = loadImage("directionKey.png");
+  taskassign = 1;
  }
  void start(int task) {
    if (frameCount % 60 == 0) {
      timer--;
+   }
+   if (timer == -1) {
+     timer = 4;
+     taskassign++;
    }
    image(taskdirections, 580, 540);
    image(directionKey, 580, 540);

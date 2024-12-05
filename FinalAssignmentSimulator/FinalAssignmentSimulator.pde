@@ -1,6 +1,6 @@
 Cockpit cockpitObject;
 Runway runwayObject;
-Tasks task;
+Tasks[] task = new Tasks[3];
 
 boolean gameStart;
 
@@ -18,7 +18,9 @@ void setup() {
   instructions = loadImage("instructions.png");
   cockpitObject = new Cockpit();
   runwayObject = new Runway();
-  task = new Tasks();
+  for (int i = 0; i < 3; i++) {
+    task[i] = new Tasks();
+  }
   font = createFont("Consolas", 75);
   gameStart = false;
 }
@@ -43,8 +45,9 @@ void game() {
   runwayObject.create();
   cockpitObject.create();
   runwayObject.move();
-  task.start(3);
+  task[0].start(task[0].taskassign);
   textFont(font);
   fill(0, 180, 0);
-  text(task.timer, 200, 600);
+  text(task[0].timer, 200, 600);
+  
 }
