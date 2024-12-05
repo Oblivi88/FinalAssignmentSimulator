@@ -45,9 +45,10 @@ void game() {
   runwayObject.create();
   cockpitObject.create();
   runwayObject.move();
-  task[0].start(task[0].taskassign);
   textFont(font);
   fill(0, 180, 0);
   text(task[0].timer, 200, 600);
+  task[0].start(task[0].taskassign);
+  println(task[0].score);
   
 }
