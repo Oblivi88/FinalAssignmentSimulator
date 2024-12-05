@@ -8,6 +8,8 @@ PImage title;
 PImage start;
 PImage instructions;
 
+PFont font;
+
 void setup() {
   size(800, 800);
   imageMode(CENTER);
@@ -17,6 +19,7 @@ void setup() {
   cockpitObject = new Cockpit();
   runwayObject = new Runway();
   task = new Tasks();
+  font = createFont("Consolas", 75);
   gameStart = false;
 }
 
@@ -40,5 +43,8 @@ void game() {
   runwayObject.create();
   cockpitObject.create();
   runwayObject.move();
-  task.start(1);
+  task.start(3);
+  textFont(font);
+  fill(0, 180, 0);
+  text(task.timer, 200, 600);
 }
