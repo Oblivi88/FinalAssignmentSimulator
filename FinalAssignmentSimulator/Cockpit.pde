@@ -1,6 +1,7 @@
 class Cockpit {
+  PVector throttlePos;
  Cockpit() {
-   
+   throttlePos = new PVector(70, 660);
  }
  // draw cockpit
  void create() {
@@ -23,7 +24,7 @@ class Cockpit {
    square(140, 460, 160);
    square(500, 460, 160);
    
-   // control stick glow
+   // control stick and glow
    fill(255, task[index].isStickGlowing);
    rect(350, 680, 100, 120);
    ellipse(400, 680, 180, 140);
@@ -31,8 +32,24 @@ class Cockpit {
    rect(360, 680, 80, 120);
    fill(40);
    ellipse(400, 680, 160, 120);
+   
+   // throttle and glow
+   fill(20);
+   quad(110, 740, 50, 800, 100, 800, 160, 740);
+   fill(255, task[index].isThrottleGlowing);
+   rect(throttlePos.x-10, throttlePos.y-10, 180, 100);
+   fill(40);
+   rect(throttlePos.x, throttlePos.y, 160, 80);
+   if (throttlePos.y+80 < 800) {
+     if (index == 3 && mousePressed && mouseX >= throttlePos.x && mouseX <= throttlePos.x + 160 && mouseY >= throttlePos.y && mouseY <= throttlePos.y + 80) {
+       throttlePos.sub(0.25, -0.25);
+     }
+   }
   
  }
-  
-  
+ 
+ 
+ void resetThrottle() {
+   throttlePos = new PVector(70, 660);
+ }
 }

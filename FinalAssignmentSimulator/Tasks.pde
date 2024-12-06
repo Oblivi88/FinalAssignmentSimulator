@@ -17,8 +17,9 @@ class Tasks {
   int taskassignment;
   // tells the main tab whether or not the score increased
   boolean scoreIncrease;
-  // whether or not the control stick glows
+  // whether or not the control stick or throttle glows
   int isStickGlowing;
+  int isThrottleGlowing;
   // argument tells main tab which task is being called in the array 
  Tasks(int taskassign) {
   font = createFont("Consolas", 75);
@@ -99,6 +100,11 @@ class Tasks {
      image(taskdirections, 580, 540);
      image(task4, 220, 540);
      image(holdMouse,580, 540);
+     isThrottleGlowing = 255;
+     if (cockpitObject.throttlePos.y + 80 == 800) {
+       image(check, 220, 550);
+       scoreIncrease = true;
+     }
    // LANDING SEQUENCE
    } else if (taskassignment == 5) {
      

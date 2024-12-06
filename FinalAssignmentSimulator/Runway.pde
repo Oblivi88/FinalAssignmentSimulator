@@ -50,4 +50,14 @@ class Runway {
      }
    }
  }
+ 
+ 
+ void reset() {
+   runwayPos1 = new PVector(285, 170);
+   runwayPos2 = new PVector(295, 170);
+   runwayPos3 = new PVector(315, 250);
+   runwayPos4 = new PVector(265, 250);
+   runwayVelocity = new PVector(0.05, 0.05);
+   runwayAlignSpeed = new PVector(0.5, 0);
+ }
 }

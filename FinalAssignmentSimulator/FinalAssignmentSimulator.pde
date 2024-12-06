@@ -59,6 +59,15 @@ void draw() {
   // if the button is clicked, set off game() function 
   if (gameStart) {
     game();
+  } else if (!gameStart) { // RESET all important values before a new game
+    index = 0;
+    score = 0;
+    for (int i = 0; i < 5; i++) {
+      task[i].scoreIncrease = false;
+    }
+    runwayObject.reset();
+    cockpitObject.resetThrottle();
+
   }
 }
 // main game loop
@@ -101,6 +110,8 @@ void game() {
   }
   if (score < 4) {
     didWin = false;
+  } else if (score >= 4) {
+    didWin = true;
   }
   
   if (runwayObject.runwayPos3.y >= 770) {
@@ -109,14 +120,14 @@ void game() {
     text(score + "/4", 150, 590);
     text("YOU", 515, 535);
     if (didWin == true) {
-      text("WIN", 495, 595);
+      text("WIN", 510, 595);
     } else if (!didWin) {
       text("LOSE", 495, 595);
     }
     image(again, 400, 360);
-    if (mousePressed && mouseX >= 260 && mouseX <= 540 && mouseY >= 280 && mouseY <= 440) {
+    if (key == ' ') {
       gameStart = false;
     }
   }
-
+println(score);
 }
