@@ -2,6 +2,7 @@ class Cockpit {
  Cockpit() {
    
  }
+ // draw cockpit
  void create() {
    stroke(80);
    strokeWeight(65);

@@ -1,18 +1,22 @@
 class Runway {
+  // PVectors for runway position, speed, and velocity
   PVector runwayPos1;
   PVector runwayPos2;
   PVector runwayPos3;
   PVector runwayPos4;
-  float i;
+  PVector runwayVelocity;
+  PVector runwaySpeed1;
+  PVector runwaySpeed2;
 
-  
+  // set PVector values
  Runway() {
    runwayPos1 = new PVector(395, 280);
    runwayPos2 = new PVector(405, 280);
    runwayPos3 = new PVector(425, 360);
    runwayPos4 = new PVector(375, 360);
-   i = 0.05;
+   runwayVelocity = new PVector(0.05, 0.05);
  }
+ // draw runway
  void create() {
     fill(25, 155, 39);
     rect(0, runwayPos1.y, 800, 800);
@@ -21,19 +25,24 @@ class Runway {
  }
   
  void move() {
-   
+   // while the runway is at a certain height on screen, set the speed to this
    if (runwayPos2.y <= 345) {
-     i = i + 0.005;
-     runwayPos1.add(-0.005, 0.055);
-     runwayPos2.add(0.005, 0.055);
-     runwayPos3.add(0.085*i, 0.025*i);
-     runwayPos4.add(-0.085*i, 0.025*i);
+     runwaySpeed1 = new PVector(0.005, 0.055);
+     runwaySpeed2 = new PVector(0.085, 0.025);
+     runwayVelocity.add(0.005, 0.005);
+     runwayPos1.add(-runwaySpeed1.x, runwaySpeed1.y);
+     runwayPos2.add(runwaySpeed1.x, runwaySpeed1.y);
+     runwayPos3.add(runwaySpeed2.x*runwayVelocity.x, runwaySpeed2.y*runwayVelocity.y);
+     runwayPos4.add(-runwaySpeed2.x*runwayVelocity.x, runwaySpeed2.y*runwayVelocity.y);
    } else {
-     i = i + 0.15;
-     runwayPos1.add(-0.005, 0.005);
-     runwayPos2.add(0.005, 0.005);
-     runwayPos3.add(0.1*i, 0.025*i);
-     runwayPos4.add(-0.1*i, 0.025*i);
+     // once it passes that point, change the speed
+     runwaySpeed1 = new PVector(0.005, 0.005);
+     runwaySpeed2 = new PVector(0.1, 0.025);
+     runwayVelocity.add(0.15, 0.15);
+     runwayPos1.add(-runwaySpeed1.x, runwaySpeed1.y);
+     runwayPos2.add(runwaySpeed1.x, runwaySpeed1.y);
+     runwayPos3.add(runwaySpeed2.x*runwayVelocity.x, runwaySpeed2.y*runwayVelocity.y);
+     runwayPos4.add(-runwaySpeed2.x*runwayVelocity.x, runwaySpeed2.y*runwayVelocity.y);
    }
   
  }
