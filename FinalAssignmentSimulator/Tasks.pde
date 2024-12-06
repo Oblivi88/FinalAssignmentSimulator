@@ -9,7 +9,8 @@ class Tasks {
   PImage task3;
   PImage task4;
   PImage taskdirections;
-  PImage directionKey;
+  PImage Fkey;
+  PImage Lkey;
   PImage check;
   PImage holdMouse;
   PImage landing;
@@ -30,7 +31,8 @@ class Tasks {
   task1 = loadImage("task0.png");
   // directions and how-to displayed on the righthand side
   taskdirections = loadImage("taskdirections.png");
-  directionKey = loadImage("directionKey.png");
+  Fkey = loadImage("Fkey.png");
+  Lkey = loadImage("LKey.png");
   holdMouse = loadImage("HoldLeftMouse.png");
   // if task is complete, show checkmark
   check = loadImage("check.png");
@@ -76,9 +78,8 @@ class Tasks {
      // display directions
      image(taskdirections, 580, 540);
      image(task2, 220, 540);
-     image(directionKey, 580, 540);
+     image(Fkey, 580, 540);
      isStickGlowing = 0;
-     text("F", 560, 590);
      if (key == 'f') {
        image(check, 220, 550);
        scoreIncrease = true;
@@ -88,8 +89,7 @@ class Tasks {
      // display directions
      image(taskdirections, 580, 540);
      image(task3, 220, 540);
-     image(directionKey, 580, 540);
-     text("L", 560, 590);
+     image(Lkey, 580, 540);
      if (key == 'l') {
        image(check, 220, 550);
        scoreIncrease = true;

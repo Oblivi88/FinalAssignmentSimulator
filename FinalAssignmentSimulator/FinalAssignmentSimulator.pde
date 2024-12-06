@@ -30,6 +30,9 @@ PImage start;
 PImage instructions;
 PImage scoreimage;
 PImage again;
+// WIN/LOSE images
+PImage win;
+PImage lose;
 
 PFont font;
 // default setup
@@ -44,6 +47,8 @@ void setup() {
   // end-game images
   scoreimage = loadImage("score.png");
   again = loadImage("again.png");
+  win = loadImage("win.png");
+  lose = loadImage("lose.png");
   // create objects
   cockpitObject = new Cockpit();
   runwayObject = new Runway();
@@ -60,7 +65,7 @@ void setup() {
 }
 // pre-game menu
 void draw() {
-  background(135,206,235);
+  background(135, 206, 235);
   // draw images
   image(title, 400, 150);
   image(start, 400, 400);
@@ -71,7 +76,7 @@ void draw() {
       gameStart = true;
     }
   }
-  // if the button is clicked, activate game() function 
+  // if the button is clicked, activate game() function
   if (gameStart) {
     game();
   } else if (!gameStart) { // RESET all important values before a new game
@@ -82,14 +87,13 @@ void draw() {
     }
     runwayObject.reset();
     cockpitObject.resetThrottle();
-
   }
 }
 
 
 // main game loop
 void game() {
-  background(135,206,235);
+  background(135, 206, 235);
   // draw runway and cockpit objects
   runwayObject.create();
   cockpitObject.create();
@@ -137,11 +141,10 @@ void game() {
     fill(0, 180, 0);
     image(scoreimage, 220, 560);
     text(score + "/4", 150, 590);
-    text("YOU", 515, 535);
     if (didWin == true) {
-      text("WIN", 510, 595);
+      image(win, 580, 540);
     } else if (!didWin) {
-      text("LOSE", 495, 595);
+      image(lose, 580, 540);
     }
     // prompt to play again
     image(again, 400, 360);
