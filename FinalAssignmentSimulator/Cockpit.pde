@@ -40,6 +40,7 @@ class Cockpit {
    rect(throttlePos.x-10, throttlePos.y-10, 180, 100);
    fill(40);
    rect(throttlePos.x, throttlePos.y, 160, 80);
+   // if the throttle is still above the target position (stop when it reaches that)
    if (throttlePos.y+80 < 800) {
      if (index == 3 && mousePressed && mouseX >= throttlePos.x && mouseX <= throttlePos.x + 160 && mouseY >= throttlePos.y && mouseY <= throttlePos.y + 80) {
        throttlePos.sub(0.25, -0.25);
@@ -48,7 +49,7 @@ class Cockpit {
   
  }
  
- 
+ // resets to default values at the beginning of a new game
  void resetThrottle() {
    throttlePos = new PVector(70, 660);
  }

@@ -40,9 +40,10 @@ class Runway {
    }
   
  }
+ // moves the runway to the right for the first task, if mouse is clicking control stick
  void task1() {
    if (mousePressed && mouseX >= 320 && mouseX <= 480 && mouseY >= 620 && mouseY <= 740) {
-     if (runwayMid < 400) {
+     if (runwayMid < 400) { // stops it from passing centre
        runwayPos1.add(runwayAlignSpeed);
        runwayPos2.add(runwayAlignSpeed);
        runwayPos3.add(runwayAlignSpeed);
@@ -51,7 +52,7 @@ class Runway {
    }
  }
  
- 
+ // reset to default values at the beginning of a new game
  void reset() {
    runwayPos1 = new PVector(285, 170);
    runwayPos2 = new PVector(295, 170);

@@ -107,7 +107,6 @@ class Tasks {
      }
    // LANDING SEQUENCE
    } else if (taskassignment == 5) {
-     
      if (runwayObject.runwayPos4.y <= 770) {
        // stops from displaying at the start
        if (timer != 0 ) {
