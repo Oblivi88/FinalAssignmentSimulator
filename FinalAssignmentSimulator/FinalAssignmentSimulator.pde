@@ -29,7 +29,6 @@ void setup() {
   }
   index = 0;
   score = 0;
-  task[index].timer = 7;
   gameStart = false;
 }
 
@@ -67,7 +66,13 @@ void game() {
       score++;
     }
     // reset the timer to 4 each time
-    task[index].timer = 4;
+    if (index == 0) {
+      task[index].timer = 8;
+    } else if (index == 3) {
+      task[index].timer = 6;
+    } else {
+      task[index].timer = 4;
+    }
     // iterates to next task
     index++;
     if (index >= task.length) {

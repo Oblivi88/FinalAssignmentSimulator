@@ -10,10 +10,10 @@ class Runway {
 
   // set PVector values
  Runway() {
-   runwayPos1 = new PVector(395, 280);
-   runwayPos2 = new PVector(405, 280);
-   runwayPos3 = new PVector(425, 360);
-   runwayPos4 = new PVector(375, 360);
+   runwayPos1 = new PVector(315, 200);
+   runwayPos2 = new PVector(325, 200);
+   runwayPos3 = new PVector(345, 280);
+   runwayPos4 = new PVector(295, 280);
    runwayVelocity = new PVector(0.05, 0.05);
  }
  // draw runway
