@@ -57,6 +57,10 @@ void game() {
   cockpitObject.create();
   // begin moving the runway closer
   runwayObject.move();
+  // activate runway alignment if index = 0
+  if (index == 0) {
+    runwayObject.task1();
+  }
   // create the task object
   task[index].start();
   // when the timer runs out, iterate to next task, increase score, and reset timer
@@ -79,5 +83,4 @@ void game() {
       index = 0;
     }
   }
-  println(score);
 }

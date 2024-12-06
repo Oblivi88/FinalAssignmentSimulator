@@ -59,6 +59,10 @@ class Tasks {
      image(task1, 220, 540);
      image(holdMouse,580, 540);
      isStickGlowing = 255;
+     if (runwayObject.runwayMid == 400) {
+       image(check, 220, 550);
+       scoreIncrease = true;
+     }
    }
      
    

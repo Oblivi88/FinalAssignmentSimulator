@@ -7,14 +7,17 @@ class Runway {
   PVector runwayVelocity;
   PVector runwaySpeed1;
   PVector runwaySpeed2;
+  PVector runwayAlignSpeed;
+  float runwayMid;
 
   // set PVector values
  Runway() {
-   runwayPos1 = new PVector(315, 200);
-   runwayPos2 = new PVector(325, 200);
-   runwayPos3 = new PVector(345, 280);
-   runwayPos4 = new PVector(295, 280);
+   runwayPos1 = new PVector(285, 170);
+   runwayPos2 = new PVector(295, 170);
+   runwayPos3 = new PVector(315, 250);
+   runwayPos4 = new PVector(265, 250);
    runwayVelocity = new PVector(0.05, 0.05);
+   runwayAlignSpeed = new PVector(0.5, 0);
  }
  // draw runway
  void create() {
@@ -25,6 +28,7 @@ class Runway {
  }
   
  void move() {
+   runwayMid = (runwayPos1.x + runwayPos2.x) / 2;
    // while the runway is at a certain height on screen, set the speed to this
    if (runwayPos2.y <= 345) {
      runwaySpeed1 = new PVector(0.005, 0.055);
@@ -45,5 +49,15 @@ class Runway {
      runwayPos4.add(-runwaySpeed2.x*runwayVelocity.x, runwaySpeed2.y*runwayVelocity.y);
    }
   
+ }
+ void task1() {
+   if (mousePressed && mouseX >= 320 && mouseX <= 480 && mouseY >= 620 && mouseY <= 740) {
+     if (runwayMid < 400) {
+       runwayPos1.add(runwayAlignSpeed);
+       runwayPos2.add(runwayAlignSpeed);
+       runwayPos3.add(runwayAlignSpeed);
+       runwayPos4.add(runwayAlignSpeed);
+     }
+   }
  }
 }
