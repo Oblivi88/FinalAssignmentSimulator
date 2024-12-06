@@ -28,21 +28,11 @@ class Runway {
  }
   
  void move() {
-   runwayMid = (runwayPos1.x + runwayPos2.x) / 2;
-   // while the runway is at a certain height on screen, set the speed to this
-   if (runwayPos2.y <= 345) {
+   if (runwayPos3.y < 770) {
+     runwayMid = (runwayPos1.x + runwayPos2.x) / 2;
      runwaySpeed1 = new PVector(0.005, 0.055);
      runwaySpeed2 = new PVector(0.085, 0.025);
-     runwayVelocity.add(0.005, 0.005);
-     runwayPos1.add(-runwaySpeed1.x, runwaySpeed1.y);
-     runwayPos2.add(runwaySpeed1.x, runwaySpeed1.y);
-     runwayPos3.add(runwaySpeed2.x*runwayVelocity.x, runwaySpeed2.y*runwayVelocity.y);
-     runwayPos4.add(-runwaySpeed2.x*runwayVelocity.x, runwaySpeed2.y*runwayVelocity.y);
-   } else {
-     // once it passes that point, change the speed
-     runwaySpeed1 = new PVector(0.005, 0.005);
-     runwaySpeed2 = new PVector(0.1, 0.025);
-     runwayVelocity.add(0.15, 0.15);
+     runwayVelocity.add(0.006, 0.008);
      runwayPos1.add(-runwaySpeed1.x, runwaySpeed1.y);
      runwayPos2.add(runwaySpeed1.x, runwaySpeed1.y);
      runwayPos3.add(runwaySpeed2.x*runwayVelocity.x, runwaySpeed2.y*runwayVelocity.y);

@@ -12,6 +12,7 @@ class Tasks {
   PImage directionKey;
   PImage check;
   PImage holdMouse;
+  PImage landing;
   // determines which task is being displayed, corresponds to argument of the constructor
   int taskassignment;
   // tells the main tab whether or not the score increased
@@ -20,7 +21,6 @@ class Tasks {
   int isStickGlowing;
   // argument tells main tab which task is being called in the array 
  Tasks(int taskassign) {
-   // timer for each task  
   font = createFont("Consolas", 75);
   // each task displayed on the lefthand side
   task2 = loadImage("task1.png");
@@ -33,29 +33,33 @@ class Tasks {
   holdMouse = loadImage("HoldLeftMouse.png");
   // if task is complete, show checkmark
   check = loadImage("check.png");
+  // Landing sequence
+  landing = loadImage("landing.png");
   // for the argument
   taskassignment = taskassign;
   // resets to false every time so the score can increase once each task
   scoreIncrease = false;
+  
+  textFont(font, 75);
 
  }
  void start() {
    // timer display
-   textFont(font, 75);
    fill(0, 180, 0);
-   if (timer > 0) {
+   if (timer > 0 && timer < 10) {
      text(timer, 200, 600);
    }
    // timer counting one per second
    if (frameCount % 60 == 0) {
      timer--;
    }
-   // display directions
-   image(taskdirections, 580, 540);
+   
    
    
    // FIRST TASK
    if (taskassignment == 1) {
+     // display directions
+     image(taskdirections, 580, 540);
      image(task1, 220, 540);
      image(holdMouse,580, 540);
      isStickGlowing = 255;
@@ -68,6 +72,8 @@ class Tasks {
    
    // SECOND TASK
    if (taskassignment == 2) {
+     // display directions
+     image(taskdirections, 580, 540);
      image(task2, 220, 540);
      image(directionKey, 580, 540);
      isStickGlowing = 0;
@@ -78,6 +84,8 @@ class Tasks {
      }
     // THIRD TASK  
    } else if (taskassignment == 3) {
+     // display directions
+     image(taskdirections, 580, 540);
      image(task3, 220, 540);
      image(directionKey, 580, 540);
      text("L", 560, 590);
@@ -87,8 +95,19 @@ class Tasks {
      }
      // FOURTH TASK
    } else  if (taskassignment == 4) {
+     // display directions
+     image(taskdirections, 580, 540);
      image(task4, 220, 540);
      image(holdMouse,580, 540);
+   // LANDING SEQUENCE
+   } else if (taskassignment == 5) {
+     
+     if (runwayObject.runwayPos4.y <= 770) {
+       // stops from displaying at the start
+       if (timer != 0 ) {
+         image(landing, 220, 540);
+       }
+     }
    }
  }
 }
